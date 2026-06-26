@@ -22,6 +22,13 @@ public class WbsController : ControllerBase
         return Ok(nodes);
     }
 
+    [HttpGet("tree")]
+    public ActionResult<IEnumerable<WbsTreeNodeDto>> GetTreeByProjectId(Guid projectId)
+    {
+        var nodes = _wbsService.GetTreeByProjectId(projectId);
+        return Ok(nodes);
+    }
+
     [HttpPost]
     public ActionResult<WbsNodeDto> Create(Guid projectId, CreateWbsNodeRequest request)
     {
